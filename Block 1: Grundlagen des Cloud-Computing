@@ -1,6 +1,6 @@
 Per Win-SCP auf den genannten Server Verbinden.
 Im Ordner https://learn2cloud.ch/24-3739 einen neuen Ordner erstellen mit deinem Namen.
-In diesem Ordner eine index.html Datei hinzufügen.
+In diesem Ordner eine index.html Datei hinzufügen. -> Wichtig: Nicht umbenennen. Bei "index.html" lassen, sonst hast du keinen Zugriff drauf.
 In diese Datei einen Code schreiben.
 
 Code:
@@ -68,4 +68,6 @@ Code:
 </body>
 </html>
 
-Speichern und dieses GIT-Repository als Link abgeben.
+Speichern und austesten.
+Je nach dem musst du dieses Git-Repository sharen mit dem Lehrer.
+Sehr wahrscheinlich musst du aber nur dein index.html speichern und das wars.
