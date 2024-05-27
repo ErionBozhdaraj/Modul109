@@ -6,39 +6,90 @@ Jede Gruppe erhält je zwei Cloud Anbieter.
 Diese muss man dann Vergeleichen.
 Entweder man vergleicht diese auf einem Flipchart oder Lädt ein Dokument auf den Server von Vorhin hoch.
 
-Vergleich zwischen AWS und Swisscloud:
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Infos zu AWS und Swisscloud</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        h2 {
+            color: #333;
+        }
+        ul {
+            margin-bottom: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        img {
+            max-width: 50%;
+            height: auto;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
 
-Infos zu AWS und Swisscloud
+<h1>Infos zu AWS und Swisscloud</h1>
 
-Infos zu AWS:
+<!-- Infos zu AWS -->
+<section>
+    <h2>Infos zu AWS:</h2>
+    <ul>
+        <li><strong>GrÃ¼ndungsjahr:</strong> 2006</li>
+        <li><strong>Anzahl Datacenter:</strong> AWS hat weltweit Ã¼ber 200 Datacenter, die in sogenannten Availability Zones (VerfÃ¼gbarkeitszonen) zusammengefasst sind.</li>
+        <li><strong>Regionen:</strong> AWS hat 32 geografische Regionen weltweit.</li>
+            <img src="https://www.awsgeek.com/AWS-Regions/AWS-Regions.jpg" alt="AWS Regions">		
+        <li><strong>In der Schweiz ein Datacenter?:</strong> Ja, AWS hat seit 2022 eine Region in der Schweiz (ZÃ¼rich), die mehrere Availability Zones umfasst.</li>
+        <li><strong>Umsatz:</strong> AWS erzielte 2023 einen Umsatz von rund 90 Milliarden US-Dollar.</li>
+        <li><strong>Kunden:</strong> AWS hat Millionen von aktiven Kunden weltweit, darunter Start-ups, Grossunternehmen und Ã¶ffentliche Organisationen.</li>
+        <li><strong>Mitarbeiter:</strong> AWS beschÃ¤ftigt weltweit Ã¼ber 70.000 Mitarbeiter.</li>
+        <li><strong>Dienstmodelle:</strong> AWS bietet drei Hauptdienstmodelle an:
+            <ul>
+                <li>Infrastructure as a Service (IaaS)</li>
+                <li>Platform as a Service (PaaS)</li>
+                <li>Software as a Service (SaaS)</li>
+            </ul>
+        </li>
+        <li><strong>Kosten fÃ¼r eine EC2-Instanz:</strong> 20.78 USD Monatlich</li>
+    </ul>
+</section>
 
-Gründungsjahr: 2006
-Anzahl Datacenter: AWS hat weltweit über 200 Datacenter, die in sogenannten Availability Zones (Verfügbarkeitszonen) zusammengefasst sind.
-Regionen: AWS hat 32 geografische Regionen weltweit (Stand: Mai 2024).
-In der Schweiz ein Datacenter?: Ja, AWS hat seit 2022 eine Region in der Schweiz (Zürich), die mehrere Availability Zones umfasst.
-Umsatz: AWS erzielte 2023 einen Umsatz von rund 90 Milliarden US-Dollar.
-Kunden: AWS hat Millionen von aktiven Kunden weltweit, darunter Start-ups, Grossunternehmen und öffentliche Organisationen.
-Mitarbeiter: AWS beschäftigt weltweit über 70.000 Mitarbeiter.
-Dienstmodelle: AWS bietet drei Hauptdienstmodelle an:
-Infrastructure as a Service (IaaS)
-Platform as a Service (PaaS)
-Software as a Service (SaaS)
-Kosten für eine EC2-Instanz: 20.78 USD Monatlich
+<!-- Infos zu Swisscloud -->
+<section>
+    <h2>Infos zu Swisscloud:</h2>
+    <ul>
+        <li><strong>GrÃ¼ndungsjahr:</strong> 2015</li>
+		<li><strong>Hauptsitz:</strong> ZÃ¼rich</li>
+        <li><strong>Anzahl Datacenter:</strong> Swiss Cloud betreibt 4 Datacenter in der Schweiz. </li>
+        <li><strong>Regionen:</strong> Swiss Cloud operiert ausschliesslich in der Schweiz</li>
+        <li><strong>Umsatz:</strong> Detaillierte Umsatzzahlen fÃ¼r Swiss Cloud sind nicht Ã¶ffentlich verfÃ¼gbar. Swiss Cloud ist ein Teil des breiteren Schweizer IT-Dienstleistungsmarktes.</li>
+        <li><strong>Kunden:</strong> Swiss Cloud hat zahlreiche GeschÃ¤ftskunden in der Schweiz, einschliesslich kleiner und mittlerer Unternehmen (KMU) sowie Grossunternehmen.</li>
+        <li><strong>Mitarbeiter:</strong> Swiss Cloud beschÃ¤ftigt mehrere Dutzend Mitarbeiter, spezifische Zahlen sind nicht Ã¶ffentlich zugÃ¤nglich.</li>
+        <li><strong>Dienstmodelle:</strong> Swiss Cloud bietet verschiedene Cloud-Dienstmodelle an:
+            <ul>
+                <li>Infrastructure as a Service (IaaS)</li>
+                <li>Platform as a Service (PaaS)</li>
+                <li>Software as a Service (SaaS)</li>
+                <li>Managed Services</li>
+            </ul>
+        </li>
+    </ul>
+</section>
 
+</body>
+</html>
 
-Infos zu Swisscloud:
-
-Gründungsjahr: 2015
-Anzahl Datacenter: Swiss Cloud betreibt 4 Datacenter in der Schweiz.
-Regionen: Swiss Cloud operiert ausschliesslich in der Schweiz
-Umsatz: Detaillierte Umsatzzahlen für Swiss Cloud sind nicht öffentlich verfügbar. Swiss Cloud ist ein Teil des breiteren Schweizer IT-Dienstleistungsmarktes.
-Kunden: Swiss Cloud hat zahlreiche Geschäftskunden in der Schweiz, einschliesslich kleiner und mittlerer Unternehmen (KMU) sowie Grossunternehmen.
-Mitarbeiter: Swiss Cloud beschäftigt mehrere Dutzend Mitarbeiter, spezifische Zahlen sind nicht öffentlich zugänglich.
-Dienstmodelle: Swiss Cloud bietet verschiedene Cloud-Dienstmodelle an:
-Infrastructure as a Service (IaaS)
-Platform as a Service (PaaS)
-Software as a Service (SaaS)
-Managed Services
 
 In einem separaten Branch füge ich alle .html Dateien beschriftet mit dem richtigen Block ein.
 Diese kann man dann kopieren und gegebenenfalls anpassen.
