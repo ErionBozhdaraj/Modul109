@@ -1,0 +1,71 @@
+Per Win-SCP auf den genannten Server Verbinden.
+Im Ordner https://learn2cloud.ch/24-3739 einen neuen Ordner erstellen mit deinem Namen.
+In diesem Ordner eine index.html Datei hinzufügen.
+In diese Datei einen Code schreiben.
+
+Code:
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cloud-Collage Erion Bozhdaraj</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+		body {
+			font-family: 'Open Sans', sans-serif;
+			text-align: center;
+			background-color: #f2f2f2;
+			color: #333;
+			padding: 20px;
+		}
+
+		h1 {
+			margin-top: 50px;
+			font-size: 36px;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+			color: #2c3e50;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 30px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.item {
+			font-size: 20px;
+			margin-bottom: 20px;
+			padding: 10px;
+			border-radius: 5px;
+			background-color: #ecf0f1;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			transition: background-color 0.3s ease;
+		}
+
+		.item:hover {
+			background-color: #bdc3c7;
+		}
+	</style>
+</head>
+<body>
+	<h1>Was ich über Cloud weiss - Erion Bozhdaraj</h1>
+	<div class="container">
+		<div class="item">Cloud-Computing</div>
+		<div class="item">Virtualisierung</div>
+		<div class="item">Cloud-Dienste</div>
+		<div class="item">Infrastructure-as-a-Service (IaaS)</div>
+		<div class="item">Platform-as-a-Service (PaaS)</div>
+		<div class="item">Software-as-a-Service (SaaS)</div>
+		<div class="item">"Sicherung von Daten"</div>
+		<div class="item">Cloud-Applikationen</div>
+		<div class="item">Cloud-Gaming</div>
+		<div class="item">Kosten</div>
+	</div>
+</body>
+</html>
+
+Speichern und dieses GIT-Repository als Link abgeben.
