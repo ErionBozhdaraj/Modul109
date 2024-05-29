@@ -1,15 +1,49 @@
-Auftrag 4.2 Container Orchestration mit Docker Compose
+Auftrag 4.1 Installation Minikube
+Zuerst muss Docker installiert werden.
+Hier eine Detaillierte Anleitung:
 
 Docker Installation auf Ubuntu 22.04 LTS
 https://www.linuxbuzz.com/how-to-install-docker-on-ubuntu/
 
+Minikube Installation:
+
+1. Dependencies
+sudo apt install curl wget apt-transport-https -y 
+
+2. Download und Installation minikube
+wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo chmod +x minikube-linux-amd64
+sudo mv minikube-linux-amd64 /usr/local/bin/minikube
+
+3. Download und Installation kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+minikube start --driver=docker
+
+4. Ein paar minikube Addons
+minikube addons enable ingress
+minikube addons enable dashboard
+minikube addons enable metrics-server
+
+5. Reboot Linux
+sudo reboot
+
+6. Start minikube und Dashboard
+minikube start --driver=docker
+minikube dashboard --url
+
+Nach dem Neustart ist Minikube erfolgreich installiert und betriebsbereit!
+
+
+Auftrag 4.2 Container Orchestration mit Docker Compose
+--
 
 
 Auftrag 4.3: minikube - Kubernetes ganz einfach (Crash Kurs)
 
 Minikube Starten:
 minikube start --driver=docker
-minikube dashboard --url
 
 In deinem GitHub ein neues Repository erstellen mit dem Namen dev_minikube.
 Dann auf folgendes Link gehen und die vier .yml Dateien herunterladen.
