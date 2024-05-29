@@ -1,0 +1,166 @@
+Auftrag 6.1: OpenShift APPUiO Projekt einrichten
+
+
+Als erstes musst du dich auf der Cloud Konsole anmelden:
+https://console.exoscale-ch-gva-2-0.appuio.cloud/
+
+Nachdem ein Projekt erstellen das wie Folgt benannt ist:
+KURSNUMMER-ebozhdaraj
+
+Das alles sollte aber auch auf der Anleitung vom ZLI stehen.
+
+Als nächstes auf die Linux Maschine und folendes eingeben:
+1. curl -s https://downloads-openshift-console.apps.exoscale-ch-gva-2-0.appuio.cloud/amd64/linux/oc.tar |sudo tar xvf - --exclude="*.md" -C /usr/local/bin/
+
+2. docker login ghcr.io -u ErionBozhdaraj (<-- Hier musst du deinen Github Username eingeben. Meiner ist "ErionBozhdaraj")
+Hier musst du das Passwort angeben welches du ebenfalls generieren musstest. Dies wird auf GITHUB selber generiert.
+
+3. Jetzt das "Passwort" welches du auf der Cloud Konsole Konfigurieren lassen hast (alles auf der Webseite vom ZLI) eingeben.
+Das "Passwort" ist wie folgt aufgebaut: oc login --token .....
+Wenn du das eingegeben hast sollten alle Projekte auf der Cloud Konsole angezeigt werden.
+
+4. Mit diesem Code kannst du dein Projekt auswählen:
+oc project 243739-ebozhdaraj
+
+5. Jetzt kommt der letzte schritt. Den folgenden Code bitte mit deinen Informationen anpassen.
+
+oc create secret docker-registry ghcr --docker-server=ghcr.io --docker-username=<Github Username> --docker-password=<Github PAT>
+oc secrets link default ghcr --for=pull
+
+zu
+
+oc create secret docker-registry ghcr --docker-server=ghcr.io --docker-username=ErionBozhdaraj --docker-password=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+oc secrets link default ghcr --for=pull
+
+Dann sollte diese Aufgabe fertig sein und wir können weiter zu 6.2.
+
+
+Auftrag 6.2: HTML-Seite auf OpenShift deployen
+
+
+Gehe auf /home/erion/ und erstelle einen neuen Ordner.
+Nenne diesen Ordner aufgabe-6.2
+
+Füge dort deine HTML Webseite die du beim Block 1 erstellt hast ein.
+Es muss eine .html datei sein.
+
+Als nächstest gehst du wieder auf dein CMD. Dort machst du folgendes:
+1. cd auftrag-6.2/
+
+2. vi Dockerfile
+
+3. docker build . -t nginx-test 
+In dieses Dokument "Dockerfile" folgendes eingeben:
+FROM nginxinc/nginx-unprivileged
+COPY index.html /usr/share/nginx/html
+
+5. Dann CTRL + O und CTRL + X
+6. Als nächstes Folgendes eingeben:
+docker run -p 8080:8080 -d nginx-test
+
+7. Als nächstes diese beiden eingeben.
+docker build -t ghcr.io/erionbozhdaraj/html-page:v1 .
+docker push ghcr.io/erionbozhdaraj/html-page:v1
+
+Wichtig: Hier muss der Gihub Username komplett kleingeschrieben werden, sonst funktioniert es nicht.
+Jetzt zwei neue .yaml Files im Aufgabe-6.2 Ordner erstellen.
+
+Wichtig dabei ist, dass die beiden Files als .yaml abgespeichert werden und ungebingt angepasst werden!!
+
+1. deployment.yaml
+Inhalt:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: m210-page
+  labels:
+    app: m210-page
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: m210-page
+  template:
+    metadata:
+      labels:
+        app: m210-page
+    spec:
+      containers:
+      - name: nginx
+        image: ghcr.io/erionbozhdaraj/html-page:v1
+        ports:
+        - containerPort: 8080
+
+
+2. service.yaml
+Inhalt:
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: m210-page
+  name: m210-page
+spec:
+  ports:
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: m210-page
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: m210-page
+  name: m210-page
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: m210-page
+  tls:
+    termination: edge   
+    insecureEdgeTerminationPolicy: Redirect
+
+
+8. Als nächstes folgendes ausführen, je 1mal:
+
+oc apply -f deployment.yaml
+oc apply -f service.yaml
+
+9. Als leztes:
+oc get routes
+
+10. Jetzt auf der Cloud Konsole auf dein Projekt gehen.
+Dort auf Workloads.
+Jetzt solltest du einen Kreis sehen der mit "m210-page" beschriftet ist sehen.
+Auf diesen Kreis klicken.
+Ganz Runterscrollen.
+Auf den Link klicken.
+Jetzt sollte deine Webseite angezeigt werden.
+
+Falls nicht, bitte an den Lehrer wenden.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
