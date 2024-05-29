@@ -4,3 +4,52 @@ Docker Installation auf Ubuntu 22.04 LTS
 https://www.linuxbuzz.com/how-to-install-docker-on-ubuntu/
 
 
+
+Auftrag 4.3: minikube - Kubernetes ganz einfach (Crash Kurs)
+
+Minikube Starten:
+minikube start --driver=docker
+minikube dashboard --url
+
+In deinem GitHub ein neues Repository erstellen mit dem Namen dev_minikube.
+Dann auf folgendes Link gehen und die vier .yml Dateien herunterladen.
+Diese .yml Dateien dann hinzufügen im neu erstellten Repository.
+
+Dann wieder auf CMD:
+cd /home/erion/
+git clone https://github.com/ErionBozhdaraj/dev_minikube
+
+dann:
+cd /home/erion/dev_minikube
+
+Als nächstes:
+
+kubectl apply -f mongo-config.yaml
+kubectl apply -f mongo-secret.yaml
+kubectl apply -f mongo.yaml
+kubectl apply -f webapp.yaml
+
+Wenn das erfolgreich ausgeführt wurde müssen wir noch folgendes ausführen:
+minikube ip
+kubectl describe service webapp
+
+Jetz solltest du eine IP erhalten haben.
+Wahrscheinlich "192.168.49.2"
+
+Falls du diese IP erhalten hast musst du auf Folgenden Link:
+http://192.168.49.2:30100
+
+Du musst ein wenig warten bis du auf diesen Link kommst.
+
+Falls es jedoch nach dem warten trotzdem nicht funktioniert führe folgendes aus:
+minikube service webapp-service
+
+Hier solltest du nun den Link ausgeschrieben bekommen haben.
+Mit CTRL gehalten, drauf klicken, dann sollte es funktionieren.
+
+Wenn du auf die Webseite kommst, ist die Aufgabe abgeschlossen.
+
+Wichtig!!!
+
+cd /home/ERION/ und auch https://github.com/ErionBozhdaraj/dev_minikube.
+Hier musst du meinen Namen mit deinem austauschen.
