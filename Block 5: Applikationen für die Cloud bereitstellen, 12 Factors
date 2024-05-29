@@ -1,0 +1,27 @@
+In dieser Aufgabe müsst Ihr eine Präsentation über 12 Faktoren erstellen.
+Jede Gruppe erhält je nach dem was für Gruppen der Lehrer einteilt je 3 Faktoren.
+Hier hast du die Informationen zu den letzten drei Faktoren.
+
+1. Dev/Prod Parity
+Um was geht es bei diesem Faktor?
+ - Entwicklung, Staging und Produktion so ähnlich wie möglich halten.
+Welches Problem löst dieser Faktor?
+ - Minimierung von Diskrepanzen zwischen Entwicklungs- und Produktionsumgebungen.
+Wie wird dieser Faktor in der realen Welt umgesetzt?
+ - Nutzung von Container (z.B. Docker), automatisierte Tests und CI/CD-Pipelines, einheitliche Konfigurations- und Deployment-Prozesse.
+
+2. Logs
+Um was geht es bei diesem Faktor?
+ - Logs als Ereignisströme behandeln.
+Welches Problem löst dieser Faktor?
+ - Zentrale Sammlung und Analyse von Logs zur Fehlerbehebung und Überwachung.
+Wie wird dieser Faktor in der realen Welt umgesetzt?
+ - Nutzung von Log-Management-Systemen (z.B. ELK-Stack), Implementierung von Event-Streaming-Architekturen, Echtzeit-Analyse und Monitoring-Tools. 
+
+3. Admin Prozesse
+Um was geht es bei diesem Faktor?
+ - Administrative Aufgaben als einmalige Prozesse ausführen.
+Welches Problem löst dieser Faktor?
+ - Isolierung von administrativen Aufgaben vom Anwendungsbetrieb.
+Wie wird dieser Faktor in der realen Welt umgesetzt?
+ - Nutzung von Skripten und Tools für einmalige Aufgaben, Einsatz von Cron-Jobs oder Task Schedulers, Separierung von Betriebs- und Verwaltungsprozessen.
