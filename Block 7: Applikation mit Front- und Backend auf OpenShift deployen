@@ -1,8 +1,12 @@
+-
+-
+-
 Auftrag 1, Quotes App:
 https://developers.redhat.com/learn/openshift/learn-kubernetes-using-developer-sandbox-red-hat-openshift
 --> Muss nicht gemacht werden.
-
+-------------------------------------------------------------------------------------------------------------------------
 Auftrag 2, Quotes App Deployen:
+-------------------------------------------------------------------------------------------------------------------------
 1. Wie im Block 6 müssen wir uns zuerst mit unserem Projekt verbinden.
 Dazu muss man auf:
 https://console.exoscale-ch-gva-2-0.appuio.cloud/
@@ -11,11 +15,13 @@ Hier auf dein Projekt gehen.
 --> Auf Benutzernamen. --> Copy Login Command. --> Display Token. --> Log in with this Token. --> Token kopieren und im CMD auf der Ubuntu VM eingeben.
 Beispiel für einen Token: oc login --token=sha256~Quk8vFAqDgUIlFolV6no0mrZlgYEYdYskX16BGFMJOI --server=https://api.exoscale-ch-gva-2-0.appuio.cloud:6443
 
-2. Folgende Gits klonen:
+-------------------------------------------------------------------------------------------------------------------------
+2. (STEP 1) Folgende Gits klonen:
 git clone https://github.com/redhat-developer-demos/quotesweb.git
 git clone https://github.com/redhat-developer-demos/quotemysql.git
 git clone https://github.com/redhat-developer-demos/qotd-python.git
 
+-------------------------------------------------------------------------------------------------------------------------
 3. Im Home verzeichnis wurden nun drei neue Ordner erstellt.
 -- qotd-python
 -- quotemysql
@@ -32,7 +38,8 @@ Jetzt muss die Datei route.yaml angepasst werden.
 
 Abspeichern nicht vergessen.
 
-4. Da das nun gemacht ist, musst du auf dem CMD auf folgendes Verzeichnis navigieren:
+-------------------------------------------------------------------------------------------------------------------------
+4. (STEP 2) Da das nun gemacht ist, musst du auf dem CMD auf folgendes Verzeichnis navigieren:
 cd qotd-python/k8s
 
 In diesem Verzeichnis führst du nun folgendes aus:
@@ -41,12 +48,120 @@ kubectl apply -f quotes-deployment.yaml
 kubectl apply -f service.yaml
 kubectl apply -f route.yaml
 
+-------------------------------------------------------------------------------------------------------------------------
+5. (STEP 3) Nun müssen wir das gleiche noch einmal machen nur in einem anderen der drei neuen Ordner.
+Manuell auf den Ordner /quotesweb/k8s.
+Auf quoetsweb-route.yaml doppelklicken und folgendes unten in die Datei einfügen:
 
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+Abspeichern!!
 
+Nun auf dem CMD ebenfalls auf den Ordner:
+/quotesweb/k8s
 
+Hier folgende drei Commands ausführen.
+kubectl apply -f quotesweb-deployment.yaml
+kubectl apply -f quotesweb-service.yaml
+kubectl apply -f quotesweb-route.yaml
 
+Danach folendes eingeben:
+kubectl get routes
 
+Jetzt sollten dir die neu erstellten "Webseiten" angezeigt werden.
+Du kannst diese Ebenfalls in deinem Projekt sehen.
 
+-------------------------------------------------------------------------------------------------------------------------
+6. Öffne die zwei neuen URLs.
+WICHTIG: Hier kommt ein Schritt welchen du mit der Anleitung machen musst.
+Wenn du auf der neu erstellten Webseite die andere Webseite suchen und finden konntest, kannst du hier weitermachen.
 
+-------------------------------------------------------------------------------------------------------------------------
+7. Nun, gebe alle folgenden Commands nacheinander in den Gruppen wie angegeben ein:
 
+> kubectl get pods
 
+> kubectl scale deployments/quotes --replicas=3
+
+> kubectl apply -f mysqlvolume.yaml
+
+> kubectl get pvc
+
+-------------------------------------------------------------------------------------------------------------------------
+8. Hier auf das Verzeichnis /quotemysql/ wechseln und diese Commands auch noch eingeben:
+cd /quotemysql/
+
+> kubectl apply -f mysql-secret.yaml
+
+> kubectl apply -f mysql-deployment.yaml
+> kubectl apply -f mysql-service.yaml
+
+> kubectl cp ./create_database_quotesdb.sql $PODNAME:/tmp/create_database_quotesdb.sql
+> kubectl cp ./create_database.sh $PODNAME:/tmp/create_database.sh
+> kubectl exec deploy/mysql -- /bin/bash ./tmp/create_database.sh
+
+> kubectl cp ./create_table_quotes.sql $PODNAME:/tmp/create_table_quotes.sql
+> kubectl cp ./create_tables.sh $PODNAME:/tmp/create_tables.sh
+> kubectl exec deploy/mysql -- /bin/bash ./tmp/create_tables.sh
+
+> kubectl cp ./populate_table_quotes_BASH.sql $PODNAME:/tmp/populate_table_quotes_BASH.sql
+> kubectl cp ./quotes.csv $PODNAME:/tmp/quotes.csv
+> kubectl cp ./populate_tables_BASH.sh $PODNAME:/tmp/populate_tables_BASH.sh
+> kubectl exec deploy/mysql -- /bin/bash ./tmp/populate_tables_BASH.sh
+
+> kubectl cp ./query_table_quotes.sql $PODNAME:/tmp/query_table_quotes.sql
+> kubectl cp ./query_table_quotes.sh $PODNAME:/tmp/query_table_quotes.sh
+> kubectl exec deploy/mysql -- /bin/bash ./tmp/query_table_quotes.sh
+
+> kubectl set env deployment/quotes DB_SERVICE_NAME=mysql
+
+> kubectl set image deploy quotes quotes=quay.io/donschenck/quotes:v2
+
+> kubectl delete pod $PODNAME
+
+-------------------------------------------------------------------------------------------------------------------------
+9. Wenn all diese Commands funktionier haben folgen nun die letzten Schritte.
+
+Erstelle eine neue Datei im Ordner quotemysql.
+Bennene diese Datei wie du wünschst.
+Wichtig ist jedoch, das Folgendes in der Datei steht.
+
+Ich habe meine Datei test.yaml benannt.
+Füge folgendes in die Datei rein:
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: app
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: quotes
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 80
+
+Achte drauf, dass du im CMD immer noch im Verzeichnis von diesem File bist, also:
+cd /quotemysql/
+
+-------------------------------------------------------------------------------------------------------------------------
+10. Jetzt noch folgenden Command ausführen:
+
+$ kubectl apply -f test.yml
+
+Hier "test.yaml" mit dem Namen den du ausgewählt hast austauschen.
+Wenn das durchgelaufen ist, kannst du auf dein Projekt. Dort solltest du nun 4 anstatt einen Kreis sehen.
+-------------------------------------------------------------------------------------------------------------------------
+Jetzt nur noch den Lehrer rufen und Ihn kontrollieren lassen.
+Falls der Lehrer sagt, es ist in Ornung, bist du mit dem Block 7 fertig.
+-
+-
+-
