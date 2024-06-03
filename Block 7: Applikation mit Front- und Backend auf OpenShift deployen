@@ -15,6 +15,7 @@ Hier auf dein Projekt gehen.
 --> Auf Benutzernamen. --> Copy Login Command. --> Display Token. --> Log in with this Token. --> Token kopieren und im CMD auf der Ubuntu VM eingeben.
 Beispiel für einen Token: oc login --token=sha256~Quk8vFAqDgUIlFolV6no0mrZlgYEYdYskX16BGFMJOI --server=https://api.exoscale-ch-gva-2-0.appuio.cloud:6443
 
+Dann oc project "Projekt Name".
 -------------------------------------------------------------------------------------------------------------------------
 2. (STEP 1) Folgende Gits klonen:
 git clone https://github.com/redhat-developer-demos/quotesweb.git
