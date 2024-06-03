@@ -1,3 +1,6 @@
+-
+-
+-
 1. Was ist Container-Technologie oder Container-Virtualisierung?
 - Container-Technologie oder Container-Virtualisierung ist eine Methode, bei der Anwendungen und ihre Abhängigkeiten in isolierten Containern ausgeführt werden, die auf einem gemeinsam genutzten Betriebssystemkern basieren.
   Container sind leichtgewichtig, starten schnell und benötigen weniger Ressourcen als virtuelle Maschinen.
@@ -41,5 +44,6 @@
   -- Cloud-Anbieter übernimmt die gesamte Verwaltung.
   -- Geringerer Verwaltungsaufwand für den Kunden.
   -- Möglicherweise höhere Kosten und weniger Anpassungsmöglichkeiten.
-
-
+-
+-
+-
