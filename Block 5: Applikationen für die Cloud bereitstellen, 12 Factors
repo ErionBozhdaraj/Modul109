@@ -1,3 +1,6 @@
+-
+-
+-
 In dieser Aufgabe müsst Ihr eine Präsentation über 12 Faktoren erstellen.
 Jede Gruppe erhält je nach dem was für Gruppen der Lehrer einteilt je 3 Faktoren.
 Hier hast du die Informationen zu den letzten drei Faktoren.
@@ -25,3 +28,6 @@ Welches Problem löst dieser Faktor?
  - Isolierung von administrativen Aufgaben vom Anwendungsbetrieb.
 Wie wird dieser Faktor in der realen Welt umgesetzt?
  - Nutzung von Skripten und Tools für einmalige Aufgaben, Einsatz von Cron-Jobs oder Task Schedulers, Separierung von Betriebs- und Verwaltungsprozessen.
+-
+-
+-
