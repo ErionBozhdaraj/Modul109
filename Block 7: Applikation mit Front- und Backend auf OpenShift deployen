@@ -1,9 +1,45 @@
 Auftrag 1, Quotes App:
 https://developers.redhat.com/learn/openshift/learn-kubernetes-using-developer-sandbox-red-hat-openshift
+--> Muss nicht gemacht werden.
 
 Auftrag 2, Quotes App Deployen:
+1. Wie im Block 6 müssen wir uns zuerst mit unserem Projekt verbinden.
+Dazu muss man auf:
+https://console.exoscale-ch-gva-2-0.appuio.cloud/
 
+Hier auf dein Projekt gehen.
+--> Auf Benutzernamen. --> Copy Login Command. --> Display Token. --> Log in with this Token. --> Token kopieren und im CMD auf der Ubuntu VM eingeben.
+Beispiel für einen Token: oc login --token=sha256~Quk8vFAqDgUIlFolV6no0mrZlgYEYdYskX16BGFMJOI --server=https://api.exoscale-ch-gva-2-0.appuio.cloud:6443
 
+2. Folgende Gits klonen:
+git clone https://github.com/redhat-developer-demos/quotesweb.git
+git clone https://github.com/redhat-developer-demos/quotemysql.git
+git clone https://github.com/redhat-developer-demos/qotd-python.git
+
+3. Im Home verzeichnis wurden nun drei neue Ordner erstellt.
+-- qotd-python
+-- quotemysql
+-- quotesweb
+
+Gehe Manuell auf den Ordner /qotd-python/k8s. Damit ist gemeint die Dateien Applikation auf Ubuntu öffnen und auf diesen Ordner gehen.
+
+Jetzt muss die Datei route.yaml angepasst werden.
+Öffne die Datei und füge am ende folgendes hinzu:
+
+ tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+
+Abspeichern nicht vergessen.
+
+4. Da das nun gemacht ist, musst du auf dem CMD auf folgendes Verzeichnis navigieren:
+cd qotd-python/k8s
+
+In diesem Verzeichnis führst du nun folgendes aus:
+
+kubectl apply -f quotes-deployment.yaml
+kubectl apply -f service.yaml
+kubectl apply -f route.yaml
 
 
 
