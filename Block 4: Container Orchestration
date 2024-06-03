@@ -1,3 +1,6 @@
+-
+-
+-
 Auftrag 4.1 Installation Minikube
 Zuerst muss Docker installiert werden.
 Hier eine Detaillierte Anleitung:
@@ -87,3 +90,6 @@ Wichtig!!!
 
 cd /home/ERION/ und auch https://github.com/ErionBozhdaraj/dev_minikube.
 Hier musst du meinen Namen mit deinem austauschen.
+-
+-
+-
